@@ -11,7 +11,7 @@ export function useSuperstoreData() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    Papa.parse('/superstore.csv', {
+    Papa.parse(`${import.meta.env.BASE_URL}superstore.csv`, {
       download: true,
       header: true,
       skipEmptyLines: true,
