@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #f4f3ef;
+  --bg-surface: #ffffff;
+  --bg-elevated: #ece9e2;
+  --accent-primary: #3d3df5;
+  --accent-secondary: #0284c7;
+  --text-primary: #17171f;
+  --text-secondary: #32324a;
+  --text-muted: #636380;
+  --border: #e0ddd6;
+  --danger: #dc2626;
+  --success: #16a34a;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Jost', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ── Animations ── */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.4; }
+}
+
+@keyframes drawerOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.insight-card {
+  animation: fadeInUp 0.4s ease both;
+}
+
+.response-panel {
+  animation: slideUp 0.35s ease both;
+}
+
+.anomaly-drawer {
+  animation: drawerOpen 0.25s ease both;
+}
+
+.live-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+.loading-shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ── Card expand transition ── */
+.chart-expand {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/* ── Command bar focus ring ── */
+.cmd-input:focus {
+  outline: none;
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 0 2px rgba(61, 61, 245, 0.12);
+}
+
+/* ── Decision trail entry ── */
+.trail-entry {
+  animation: fadeInUp 0.3s ease both;
+}
+
+/* ── Recharts overrides ── */
+.recharts-cartesian-grid line {
+  display: none;
+}
+.recharts-cartesian-axis-line {
+  display: none;
+}
+.recharts-cartesian-axis-tick-line {
+  display: none;
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(61, 61, 245, 0.12);
+  color: var(--text-primary);
+}
